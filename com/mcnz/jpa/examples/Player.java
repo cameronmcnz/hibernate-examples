@@ -7,20 +7,20 @@ import javax.persistence.Id;
 @Entity 
 public class Player {
 	
+	
+	public Player() {}
+	
+	public Player(String name, String password) {
+		this.name = name;
+		this.password=password;
+	}
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
 	private String password;
-	private String test;
-	
-	
-	public String getTest() {
-		return test;
-	}
-	public void setTest(String test) {
-		this.test = test;
-	}
+
 	public Long getId() {
 		return id;
 	}
