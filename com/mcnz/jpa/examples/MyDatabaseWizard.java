@@ -11,7 +11,7 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.hbm2ddl.SchemaExport.Action;
 import org.hibernate.tool.schema.TargetType;
 
-public class CreateDatabaseWithSchemaExport {
+public class MyDatabaseWizard {
 	
 	public static MetadataSources entityList;
 	
@@ -29,18 +29,23 @@ public class CreateDatabaseWithSchemaExport {
                 .applySettings(settings)
                 .build();
         
+        
+        
         entityList = new MetadataSources(serviceRegistry);
 	}
 	
+	public static void addEntity(Class<?> annotatedClass) {
+		MyDatabaseWizard.entityList.addAnnotatedClass(annotatedClass);
+	}
+	
 	public static void createDatabase() {
-
         EnumSet<TargetType> enumSet = EnumSet.of(TargetType.DATABASE);
         SchemaExport schemaExport = new SchemaExport();
         schemaExport.execute(enumSet, Action.BOTH, entityList.buildMetadata());
 	}
 
 	public static void main(String[] args) {
-		entityList.addAnnotatedClass(Player.class);
-        CreateDatabaseWithSchemaExport.createDatabase();
+		MyDatabaseWizard.addEntity(Player.class);
+		MyDatabaseWizard.createDatabase();
 	}
 }
