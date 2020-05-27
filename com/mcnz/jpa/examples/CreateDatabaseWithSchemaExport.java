@@ -44,3 +44,7 @@ public class CreateDatabaseWithSchemaExport {
         CreateDatabaseWithSchemaExport.createDatabase();
 	}
 }
+/*
+C:\_workspace>javac -classpath "C:\_hiblib\*" C:\_workspace\com\mcnz\jpa\examples\*.java
+C:\_workspace>java -classpath "C:\_hiblib\*";C:\_workspace com.mcnz.jpa.examples.MyDatabaseWizard
+*/
